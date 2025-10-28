@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Terms & Conditions — SG Tools</title>
+  <style>
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #9aa4b2;
+      --accent: #1e90ff;
+      --accent2: #7c5cff;
+      --glass: rgba(255,255,255,0.05);
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      font-family: "Poppins", sans-serif;
+      color: #e8eef9;
+      overflow-x: hidden;
+    }
+    header {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      padding: 15px 0;
+      text-align: center;
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-shadow: 0 0 8px rgba(255,255,255,0.5);
+    }
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      background: var(--glass);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+      backdrop-filter: blur(12px);
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px var(--accent2);
+    }
+    h2 {
+      color: var(--accent2);
+      margin-top: 25px;
+      font-size: 1.3rem;
+    }
+    p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 10px;
+    }
+    button {
+      display: block;
+      margin: 40px auto 0;
+      padding: 14px 28px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 20px var(--accent);
+      transition: 0.25s;
+    }
+    button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 35px var(--accent2);
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      margin: 40px 0;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>SG Tools</header>
+
+  <div class="container">
+    <h1>Terms and Conditions</h1>
+
+    <p>Welcome to SG Tools! Please read these terms and conditions carefully before using our website or any of our tools.</p>
+
+    <h2>1. Use of Our Site</h2>
+    <p>You agree to use SG Tools only for lawful and respectful purposes. You must not misuse our services or disrupt the site’s functionality.</p>
+
+    <h2>2. Intellectual Property</h2>
+    <p>All logos, visuals, and interactive elements are part of SG Tools and may not be copied, redistributed, or used without permission.</p>
+
+    <h2>3. Limitation of Liability</h2>
+    <p>SG Tools is provided "as is" without any warranties. We are not liable for any damage, data loss, or technical issues that may occur from using our tools.</p>
+
+    <h2>4. Modifications</h2>
+    <p>We reserve the right to modify these terms at any time. Continued use of SG Tools means you accept the updated terms.</p>
+
+    <h2>5. Acceptance</h2>
+    <p>By clicking the button below, you confirm that you have read, understood, and agree to these Terms & Conditions. if you wan to read </p>
+
+    <button id="acceptBtn">I Accept the Terms</button>
+  </div>
+
+  <footer>
+    <p>© 2025 SG Tools</p>
+  </footer>
+
+  <script>
+    document.getElementById('acceptBtn').addEventListener('click', () => {
+      localStorage.setItem('termsAccepted', 'yes');
+      alert('✅ Thank you for accepting the Terms & Conditions!');
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

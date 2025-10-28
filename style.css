@@ -1,0 +1,201 @@
+:root{
+  --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#1e90ff; --glass: rgba(255,255,255,0.03);
+  --radius:14px; --gap:18px; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+html,body{height:100%; margin:0; background:linear-gradient(180deg,#071426 0%, #071824 100%); color:#e6eef6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+header{padding:28px 48px; display:flex; flex-direction: column; align-items:center; gap:12px;}
+.brand{display:flex; flex-direction: column; align-items:center; gap:12px;}
+
+/* Mirror / reflection effect (keeps your mirror effect) */
+.brand {
+  -webkit-box-reflect: below 6px linear-gradient(transparent, rgba(255,255,255,0.03));
+  /* non-webkit fallback is harmless */
+}
+
+/* Main Logo */
+.logo{
+  width:90px;
+  height:90px;
+  background:linear-gradient(135deg,#4285F4,#34A853,#FBBC05,#EA4335);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  color:#061028;
+  font-size:26px;
+  transition: transform 0.4s ease, filter 0.3s ease, box-shadow 0.4s ease, opacity 0.5s ease;
+  border-radius:22px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.5);
+  cursor:pointer;
+  position:relative;
+  z-index:2;
+}
+.logo:hover{
+  transform: scale(1.1) rotate(-5deg);
+  filter: brightness(1.2);
+}
+
+/* Click Glow Animation */
+@keyframes logoGlow {
+  0% { box-shadow: 0 0 10px rgba(30,144,255,0.3); transform: scale(1); }
+  50% { box-shadow: 0 0 35px rgba(30,144,255,0.8); transform: scale(1.25); }
+  100% { box-shadow: 0 0 8px rgba(30,144,255,0.2); transform: scale(1); }
+}
+.logo.clicked {
+  animation: logoGlow 1.2s ease-in-out;
+}
+
+/* Pixel explosion pieces */
+.pixel {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius:2px;
+  pointer-events: none;
+  animation: fall 900ms forwards;
+  will-change: transform, opacity;
+  z-index:9999;
+}
+@keyframes fall {
+  to { transform: translateY(120px) rotate(720deg) scale(0.4); opacity: 0; }
+}
+
+/* Header + Search UI */
+h1{margin:0;font-size:22px; text-align:center;}
+p.lead{margin:0;color:var(--muted);font-size:13px; text-align:center;}
+.controls{display:flex;gap:12px;align-items:center; justify-content:center; flex-wrap: wrap;}
+
+.search {
+  position: relative;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--glass);
+  border: 2px solid rgba(255,255,255,0.1);
+  min-width: 300px;
+  color: var(--muted);
+  font-size: 14px;
+  transition: all 0.3s ease;
+  outline: none;
+  box-shadow: 0 0 10px rgba(30,144,255,0.3);
+}
+.search:focus {
+  border-color: var(--accent);
+  animation: glow 1.5s infinite alternate;
+  color: #fff;
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(30,144,255,0.3); }
+  50% { box-shadow: 0 0 20px rgba(30,144,255,0.6), 0 0 40px rgba(30,144,255,0.2) inset; }
+}
+
+/* Category Dropdown */
+.select-wrapper{position: relative; display: inline-block;}
+.select {
+  position: relative;
+  padding: 12px 40px 12px 16px;
+  border-radius: 12px;
+  background: #071226;
+  border: 2px solid rgba(255,255,255,0.1);
+  color: var(--muted);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(30,144,255,0.2);
+  appearance: none;
+}
+.select:focus {
+  border-color: var(--accent);
+  animation: glow 1.5s infinite alternate;
+  color: #fff;
+}
+
+/* Cards + Animation */
+main{padding:22px 48px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);}
+
+/* Card base */
+.card{
+  position: relative;
+  overflow: hidden;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:var(--radius);
+  padding:16px;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  box-shadow:0 6px 18px rgba(2,6,23,0.6);
+  border:1px solid rgba(255,255,255,0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.card:hover{
+  transform: translateY(-8px) scale(1.03) rotateZ(1deg);
+  box-shadow: 0 20px 45px rgba(2,6,23,0.7);
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+}
+
+/* Glow Grow Animation for appearing */
+@keyframes cardGlow {
+  0% { opacity:0; transform: scale(0.8); box-shadow:0 0 0 rgba(30,144,255,0); }
+  50% { opacity:1; transform: scale(1.05); box-shadow:0 0 30px rgba(30,144,255,0.4); }
+  100% { opacity:1; transform: scale(1); box-shadow:0 0 0 rgba(30,144,255,0); }
+}
+.card.appear {
+  animation: cardGlow 0.9s ease forwards;
+}
+
+/* Product icon */
+.favicon{
+  width:56px; height:56px;
+  background:linear-gradient(135deg,#34A853,#4285F4);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:13px; color:white;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  border-radius:6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+.card:hover .favicon{
+  transform: scale(1.2) rotate(-5deg);
+  background:linear-gradient(135deg,#1e90ff,#7c5cff);
+  box-shadow: 0 0 15px rgba(30,144,255,0.6);
+}
+
+.info{flex:1}
+.title-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.title{font-size:15px;margin:0}
+.desc{margin:6px 0 0;color:var(--muted);font-size:13px}
+.meta{display:flex;gap:8px;margin-top:12px;align-items:center}
+.btn{padding:8px 10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.06);cursor:pointer;color:var(--muted);font-size:13px}
+.btn.primary{border-color:transparent;background:linear-gradient(90deg,var(--accent),#7c5cff);color:white}
+footer{padding:18px 48px;color:var(--muted);font-size:13px;text-align:center}
+
+/* On-hover glossy light sweep (white glossy) */
+/* .shinelayer is added inside each .card in JS; I keep it non-destructive */
+.card .shinelayer{
+  position:absolute;
+  left:-60%;
+  top:-20%;
+  width:45%;
+  height:160%;
+  transform: rotate(25deg) translateX(-100%);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.65) 50%, rgba(255,255,255,0) 100%);
+  opacity:0;
+  pointer-events:none;
+  transition: transform 900ms cubic-bezier(.2,.9,.2,1), opacity 400ms ease;
+  mix-blend-mode: screen;
+  filter: blur(0.6px);
+}
+.card:hover .shinelayer{
+  transform: rotate(25deg) translateX(220%);
+  opacity:1;
+}
+
+/* Modal and other elements (unchanged) */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0);transition: background 0.3s ease;}
+.modal.show{display:flex; background:rgba(0,0,0,0.5);}
+.modal .panel{width:760px;border-radius:12px;background:linear-gradient(180deg,#021226,#06162a);padding:18px;border:1px solid rgba(255,255,255,0.03); transform: translateY(-20px); opacity:0; transition: transform 0.3s ease, opacity 0.3s ease;}
+.modal.show .panel{transform: translateY(0); opacity:1;}
+
+@media (max-width:1200px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}; header{padding:18px}; main{padding:18px}}
+@media (max-width:720px){.grid{grid-template-columns:1fr}; .search{min-width:0;width:100%}; .controls{flex-direction:column;align-items:stretch}}
