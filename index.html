@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SG Tools — Interactive Desktop Directory</title>
+<script>
+  if (localStorage.getItem('termsAccepted') !== 'yes') {
+    window.location.href = 'terms.html';
+  }
+</script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo" id="mainLogo" aria-label="Main logo">SG</div>
+      <h1>SG Tools - gives important tools</h1>
+      <p class="lead">100+ tools available version=1.0 beta. Desktop-first interactive card grid — search, filter, copy links, and open in new tabs.(Animated Version)</p>
+    </div>
+    <div class="controls">
+      <input id="search" class="search" placeholder="Search products (type name or category) — desktop view optimized" />
+      <div class="select-wrapper">
+        <select id="category" class="select" aria-label="Filter by category">
+          <option value="all">All categories</option>
+        </select>
+      </div>
+      <button id="reset" class="btn">Reset</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="grid" class="grid" aria-live="polite"></div>
+  </main>
+
+  <footer>Created for desktop views. Click a product's "Open" to launch in a new tab or "Copy" to copy its link.</footer>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true">
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <strong id="modal-title">Product</strong>
+        <button id="modal-close" class="btn">Close</button>
+      </div>
+      <p id="modal-desc" style="color:var(--muted)"></p>
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <a id="modal-open" class="btn primary" target="_blank" rel="noopener">Open product</a>
+        <button id="modal-copy" class="btn">Copy link</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
